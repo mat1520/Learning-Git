@@ -1,0 +1,211 @@
+---
+title: "Introducción a Git"
+description: "Aprende qué es Git, por qué es importante y conceptos fundamentales del control de versiones"
+level: "Principiante"
+duration: "10 min"
+topics: ["¿Qué es Git?", "Control de versiones", "Historia de Git", "Conceptos básicos"]
+---
+
+# Introducción a Git
+
+¡Bienvenido al fascinante mundo de Git! Si eres estudiante de Ingeniería en Sistemas, dominar Git será una de las habilidades más valiosas que puedas adquirir.
+
+## ¿Qué es Git?
+
+Git es un **sistema de control de versiones distribuido** creado por Linus Torvalds (el mismo creador de Linux) en 2005. Pero, ¿qué significa esto exactamente?
+
+Imagínate que estás escribiendo una tesis. Probablemente hagas algo como esto:
+
+```
+tesis_v1.docx
+tesis_v2.docx
+tesis_v2_con_cambios_profesor.docx
+tesis_v3_casi_final.docx
+tesis_v3_final.docx
+tesis_v3_final_REAL.docx
+```
+
+¿Te suena familiar? 😅
+
+Git resuelve este problema de una manera elegante y profesional.
+
+## ¿Por qué es tan importante Git?
+
+### 🔄 Control de Versiones Inteligente
+
+- **Historial completo:** Git recuerda TODOS los cambios que has hecho
+- **Comparación de versiones:** Puedes ver exactamente qué cambió entre versiones
+- **Recuperación:** Si algo se rompe, puedes volver a cualquier punto anterior
+
+### 👥 Colaboración Eficiente
+
+- **Trabajo en equipo:** Múltiples personas pueden trabajar en el mismo proyecto simultáneamente
+- **Fusión automática:** Git es inteligente para combinar cambios de diferentes personas
+- **Resolución de conflictos:** Herramientas para cuando dos personas modifican la misma línea
+
+### 🌿 Desarrollo Paralelo (Branching)
+
+- **Ramas:** Puedes crear "copias" de tu proyecto para trabajar en diferentes features
+- **Experimentación segura:** Prueba ideas nuevas sin afectar el código principal
+- **Integración controlada:** Combina cambios cuando estén listos
+
+## Conceptos Fundamentales
+
+### Repositorio (Repository)
+Es tu proyecto completo, incluyendo:
+- Todos los archivos
+- El historial completo de cambios
+- Las configuraciones
+
+### Commit
+Un "commit" es como una "fotografía" de tu proyecto en un momento específico:
+- Contiene todos los archivos en ese momento
+- Tiene un mensaje que describe los cambios
+- Tiene un identificador único (hash)
+
+### Working Directory vs Staging Area vs Repository
+
+```
+Working Directory  →  Staging Area  →  Repository
+(tus archivos)        (preparación)     (historial)
+      ↓                    ↓                ↓
+   git add  --------→  git commit ----→  Permanent
+```
+
+1. **Working Directory:** Donde trabajas y modificas archivos
+2. **Staging Area:** Donde preparas los cambios que quieres guardar
+3. **Repository:** Donde se guarda permanentemente el historial
+
+## Git vs Otros Sistemas
+
+### ✅ Ventajas de Git
+
+| Característica | Git | Otros sistemas |
+|----------------|-----|----------------|
+| **Velocidad** | ⚡ Súper rápido | 🐌 Más lento |
+| **Distribución** | 🌐 Cada copia es completa | 🏢 Depende del servidor |
+| **Branching** | 🌿 Extremadamente eficiente | 😅 Complicado |
+| **Popularidad** | 👑 Standard de la industria | 📉 En declive |
+
+### Comparación con otras herramientas
+
+- **Google Drive/Dropbox:** Bien para documentos, terrible para código
+- **SVN/CVS:** Sistemas centralizados antiguos
+- **Git:** Moderno, distribuido, eficiente
+
+## Un Poco de Historia
+
+### 2005: El Nacimiento
+- Linus Torvalds crea Git para el desarrollo del kernel de Linux
+- Necesitaba algo mejor que las herramientas existentes
+- Lo desarrolló en solo 2 semanas (!!)
+
+### 2008: GitHub
+- Se lanza GitHub, haciendo Git accesible para todos
+- Revoluciona la colaboración en código abierto
+
+### 2018: Microsoft compra GitHub
+- Por $7.5 billones de dólares
+- Muestra la importancia de Git en la industria
+
+### Hoy: Ubicuidad
+- Usado por prácticamente todas las empresas tech
+- Standard en universidades
+- Esencial para cualquier desarrollador
+
+## ¿Cómo Funciona Git? (Conceptual)
+
+### 1. Snapshots, no Diferencias
+Otros sistemas guardan las diferencias entre versiones:
+```
+Version 1: archivo.txt
+Version 2: +línea 5, -línea 10
+Version 3: +línea 20
+```
+
+Git guarda snapshots completos:
+```
+Commit 1: [snapshot completo]
+Commit 2: [snapshot completo]
+Commit 3: [snapshot completo]
+```
+
+### 2. Estructura de Datos
+Git usa una estructura similar a un árbol:
+```
+proyecto/
+├── src/
+│   ├── main.js
+│   └── utils.js
+├── tests/
+│   └── test.js
+└── README.md
+```
+
+Cada commit apunta a este "árbol" de archivos.
+
+### 3. Hash SHA-1
+Cada commit tiene un identificador único:
+```
+commit a3b2c1d4e5f6789...
+```
+Este hash garantiza la integridad de los datos.
+
+## Casos de Uso Reales
+
+### 👨‍💻 Desarrollador Individual
+- Guarda versiones de tu código
+- Experimenta con nuevas ideas sin miedo
+- Mantén un portafolio profesional en GitHub
+
+### 👥 Equipos de Desarrollo
+- Coordinación entre programadores
+- Review de código antes de integrarlo
+- Deployment automatizado
+
+### 🏫 Proyectos Universitarios
+- Colaboración en proyectos grupales
+- Respaldo automático de tu trabajo
+- Demostración de tu progreso
+
+### 🚀 Empresas
+- Desarrollo de software a gran escala
+- Integración continua y deployment
+- Gestión de releases y hotfixes
+
+## Preparándose para Git
+
+### Lo que necesitas saber
+- **Línea de comandos básica:** cd, ls, mkdir
+- **Conceptos de archivos y carpetas**
+- **Lógica de programación básica**
+
+### Lo que NO necesitas ser
+- ❌ Experto en programación
+- ❌ Guru de la terminal
+- ❌ Tener años de experiencia
+
+## Próximos Pasos
+
+Ahora que entiendes QUÉ es Git y POR QUÉ es importante, es hora de ensuciarse las manos:
+
+1. **[Configuración Inicial](/guias/configuracion-inicial)** - Prepara Git en tu sistema
+2. **[Comandos Básicos](/guias/comandos-basicos)** - Aprende los comandos esenciales
+3. **[Práctica en Terminal](/ejercicios)** - Usa nuestra terminal interactiva
+
+## Reflexión Final
+
+Git no es solo una herramienta técnica, es una **filosofía de trabajo**:
+
+- **Transparencia:** Todo cambio está documentado
+- **Colaboración:** Facilita el trabajo en equipo
+- **Confianza:** Siempre puedes volver atrás
+- **Profesionalismo:** Es el standard de la industria
+
+Como estudiante de Ingeniería en Sistemas, dominar Git te dará una ventaja competitiva enorme. ¡No solo aprenderás una herramienta, sino una forma de pensar sobre el desarrollo de software!
+
+---
+
+¿Listo para el siguiente paso? Ve a nuestra [terminal interactiva](/ejercicios) y ejecuta tu primer comando: `git init`
+
+¡Tu viaje en Git comienza ahora! 🚀

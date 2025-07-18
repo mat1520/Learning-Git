@@ -1,0 +1,194 @@
+---
+title: "Comandos Básicos de Git"
+description: "Domina los comandos esenciales que necesitas para el día a día con Git"
+level: "Principiante"
+duration: "25 min"
+topics: ["git init", "git add", "git commit", "git status", "git log"]
+---
+
+# Comandos Básicos de Git
+
+Bienvenido a la guía completa de comandos básicos de Git. En esta lección aprenderás los comandos esenciales que todo desarrollador necesita conocer.
+
+## ¿Qué es Git?
+
+Git es un sistema de control de versiones distribuido que te permite:
+
+- 📝 Registrar cambios en tu código a lo largo del tiempo
+- 🔄 Colaborar con otros desarrolladores de forma eficiente  
+- 🌿 Crear y fusionar ramas para desarrollar features
+- 📚 Mantener un historial completo de tu proyecto
+
+## Comandos Fundamentales
+
+### 1. `git init` - Inicializar un repositorio
+
+```bash
+git init
+```
+
+Este comando crea un nuevo repositorio Git en tu directorio actual. Esto significa que Git comenzará a rastrear los cambios en esta carpeta.
+
+**¿Cuándo usarlo?**
+- Al empezar un proyecto nuevo
+- Para convertir una carpeta existente en un repositorio Git
+
+### 2. `git status` - Verificar el estado
+
+```bash
+git status
+```
+
+Muestra el estado actual de tu repositorio:
+- Archivos modificados
+- Archivos en staging area
+- Archivos sin seguimiento
+
+**Tip:** Usa este comando frecuentemente para mantener control sobre tus cambios.
+
+### 3. `git add` - Agregar archivos al staging area
+
+```bash
+# Agregar un archivo específico
+git add archivo.txt
+
+# Agregar todos los archivos
+git add .
+
+# Agregar archivos por extensión
+git add *.js
+```
+
+El staging area es como una "zona de preparación" donde seleccionas qué cambios quieres incluir en tu próximo commit.
+
+### 4. `git commit` - Guardar cambios
+
+```bash
+# Commit con mensaje
+git commit -m "Descripción de los cambios"
+
+# Commit más descriptivo
+git commit -m "feat: agregar función de login" -m "Implementa autenticación con JWT y validación de credenciales"
+```
+
+**Mejores prácticas para mensajes de commit:**
+- Usa el imperativo: "Agregar", "Corregir", "Actualizar"
+- Sé específico pero conciso
+- Incluye el contexto si es necesario
+
+### 5. `git log` - Ver historial de commits
+
+```bash
+# Historial completo
+git log
+
+# Historial en una línea
+git log --oneline
+
+# Últimos 3 commits
+git log -3
+
+# Con gráfico de ramas
+git log --graph --oneline
+```
+
+## Flujo de Trabajo Básico
+
+Aquí está el flujo típico que seguirás todos los días:
+
+```bash
+# 1. Verificar estado
+git status
+
+# 2. Agregar cambios
+git add .
+
+# 3. Verificar qué se agregó
+git status
+
+# 4. Hacer commit
+git commit -m "Descripción del cambio"
+
+# 5. Ver el historial
+git log --oneline
+```
+
+## Ejemplos Prácticos
+
+### Ejemplo 1: Nuevo Proyecto
+
+```bash
+# Crear directorio
+mkdir mi-proyecto
+cd mi-proyecto
+
+# Inicializar Git
+git init
+
+# Crear archivo
+echo "# Mi Proyecto" > README.md
+
+# Agregar al staging
+git add README.md
+
+# Hacer primer commit
+git commit -m "feat: agregar README inicial"
+```
+
+### Ejemplo 2: Modificar Archivos Existentes
+
+```bash
+# Modificar archivo
+echo "Contenido adicional" >> README.md
+
+# Ver cambios
+git status
+
+# Agregar cambios
+git add README.md
+
+# Commit
+git commit -m "docs: actualizar README con más información"
+```
+
+## Consejos Importantes
+
+### ✅ Buenas Prácticas
+
+- **Haz commits frecuentes:** Pequeños cambios son más fáciles de rastrear
+- **Mensajes descriptivos:** Tu yo del futuro te lo agradecerá
+- **Revisa antes del commit:** Usa `git status` para verificar qué estás confirmando
+
+### ❌ Errores Comunes
+
+- No usar `git status` antes de hacer commit
+- Mensajes de commit vagos como "cambios" o "fix"
+- Hacer commits demasiado grandes con muchos cambios no relacionados
+
+## Configuración Inicial Importante
+
+Antes de hacer tu primer commit, configura tu identidad:
+
+```bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
+```
+
+## Práctica Ahora
+
+¿Listo para practicar? Ve a nuestra [terminal interactiva](/ejercicios) y prueba estos comandos:
+
+1. Inicializa un repositorio con `git init`
+2. Crea un archivo con `touch archivo.txt`
+3. Agrega contenido con `echo "Hola mundo" > archivo.txt`
+4. Agrega al staging con `git add archivo.txt`
+5. Haz tu primer commit con `git commit -m "Mi primer commit"`
+6. Ve el historial con `git log`
+
+## Siguiente Paso
+
+Una vez que domines estos comandos básicos, estarás listo para aprender sobre [ramas y merge](/guias/ramas-y-merge), que te permitirán trabajar en múltiples features simultáneamente.
+
+---
+
+¿Te ha sido útil esta guía? ¡Practica estos comandos en nuestra terminal interactiva y gana puntos en el sistema de logros!
