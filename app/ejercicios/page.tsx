@@ -21,13 +21,13 @@ export default function EjerciciosPage() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-primary-600 dark:text-primary-400">Nivel Principiante</h3>
               <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                <p>1. Configura tu usuario: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git config user.name "Tu Nombre"</code></p>
+                <p>1. Configura tu usuario: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git config user.name &quot;Tu Nombre&quot;</code></p>
                 <p>2. Inicializa un repositorio: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git init</code></p>
                 <p>3. Crea un archivo: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">touch README.md</code></p>
-                <p>4. Agrega contenido: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">echo "# Mi Proyecto" &gt; README.md</code></p>
+                <p>4. Agrega contenido: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">echo &quot;# Mi Proyecto&quot; &gt; README.md</code></p>
                 <p>5. Revisa el estado: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git status</code></p>
                 <p>6. Agrega al staging: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git add README.md</code></p>
-                <p>7. Haz tu primer commit: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git commit -m "Primer commit"</code></p>
+                <p>7. Haz tu primer commit: <code className="bg-gray-100 dark:bg-gray-700 px-1 rounded">git commit -m &quot;Primer commit&quot;</code></p>
               </div>
             </div>
             

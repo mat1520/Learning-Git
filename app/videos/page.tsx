@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Play, Clock, ExternalLink, Youtube } from 'lucide-react'
 
 const videos = [
@@ -155,9 +156,11 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 overflow-hidden group cursor-pointer">
       {/* Thumbnail */}
       <div className="relative" onClick={openVideo}>
-        <img
+        <Image
           src={video.thumbnail}
           alt={video.title}
+          width={400}
+          height={225}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
