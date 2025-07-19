@@ -22,3 +22,13 @@ node_modules
 *.next/webpack
 *.next/webpack-cache
 *.next/webpack-stats.json 
+*.next/trace.json
+*.next/trace-loader.js
+*.next/trace-loader.js.map
+*.next/trace-loader.js.map.json
+*.next/trace-loader.js.map.js
+*.next/trace-loader.js.map.js.map
+*.next/trace-loader.js.map.js.map.json
+*.next/trace-loader.js.map.js.map.js
+*.next/trace-loader.js.map.js.map.js.map
+*.next/trace-loader.js.map.js.map.js.map.json
