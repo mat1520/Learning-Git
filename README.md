@@ -262,8 +262,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 **Ariel Melo**
 - GitHub: [@mat1520](https://github.com/mat1520)
-- LinkedIn: [Ariel Melo](https://linkedin.com/in/ariel-melo)
-- Email: ariel@example.com
 
 ## 🙏 Agradecimientos
 

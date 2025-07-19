@@ -23,6 +23,8 @@ export interface GitRepository {
   commits: GitCommit[]
   isInitialized: boolean
   userConfig: GitUserConfig
+  commandHistory?: string[]
+  sessionCount?: number
 }
 
 export interface CommandHistory {

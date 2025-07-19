@@ -57,22 +57,6 @@ export default function Footer() {
                 <Github className="w-5 h-5 mr-2" />
                 GitHub
               </a>
-              <a
-                href="https://linkedin.com/in/ariel-melo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center text-gray-300 hover:text-white transition-colors"
-              >
-                <Linkedin className="w-5 h-5 mr-2" />
-                LinkedIn
-              </a>
-              <a
-                href="mailto:ariel@example.com"
-                className="flex items-center text-gray-300 hover:text-white transition-colors"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Email
-              </a>
             </div>
           </div>
         </div>

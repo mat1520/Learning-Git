@@ -13,7 +13,9 @@ const INITIAL_REPOSITORY: GitRepository = {
   branches: ['main'],
   files: [],
   commits: [],
-  userConfig: { name: '', email: '' }
+  userConfig: { name: '', email: '' },
+  commandHistory: [],
+  sessionCount: 1
 }
 
 export default function GitTerminal() {
@@ -97,8 +99,12 @@ export default function GitTerminal() {
 
     setTerminalHistory(prev => [...prev, currentCommand])
     
-    // Actualizar repositorio y verificar logros
-    const newRepo = result.repository
+    // Actualizar repositorio con historial de comandos y verificar logros
+    const newRepo = {
+      ...result.repository,
+      commandHistory: [...(repository.commandHistory || []), currentCommand],
+      sessionCount: repository.sessionCount || 1
+    }
     setRepository(newRepo)
     
     // Verificar logros después de ejecutar el comando

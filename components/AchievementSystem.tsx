@@ -6,6 +6,7 @@ import { Achievement } from '@/types'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
+  // Categoría: Básicos
   {
     id: 'first-init',
     title: 'Primer Paso',
@@ -27,6 +28,38 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     points: 15
   },
   {
+    id: 'first-status',
+    title: 'Inspector',
+    description: 'Usaste git status para ver el estado',
+    icon: 'target',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'basics',
+    points: 5
+  },
+  {
+    id: 'first-add',
+    title: 'Preparador',
+    description: 'Agregaste tu primer archivo al staging area',
+    icon: 'checkCircle',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'basics',
+    points: 10
+  },
+  {
+    id: 'help-seeker',
+    title: 'Curioso',
+    description: 'Usaste el comando help para aprender',
+    icon: 'star',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'basics',
+    points: 5
+  },
+
+  // Categoría: Configuración
+  {
     id: 'config-master',
     title: 'Configurador',
     description: 'Configuraste tu nombre y email en Git',
@@ -36,6 +69,18 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     category: 'configuration',
     points: 10
   },
+  {
+    id: 'name-setter',
+    title: 'Identificado',
+    description: 'Configuraste tu nombre de usuario',
+    icon: 'target',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'configuration',
+    points: 5
+  },
+
+  // Categoría: Ramas
   {
     id: 'branch-creator',
     title: 'Ramificador',
@@ -47,6 +92,38 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     points: 20
   },
   {
+    id: 'branch-switcher',
+    title: 'Navegante',
+    description: 'Cambiaste entre ramas usando checkout',
+    icon: 'star',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'branching',
+    points: 15
+  },
+  {
+    id: 'multi-branch',
+    title: 'Multi-rama',
+    description: 'Tienes 3 o más ramas en tu repositorio',
+    icon: 'trophy',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'branching',
+    points: 30
+  },
+  {
+    id: 'branch-lister',
+    title: 'Explorador',
+    description: 'Listaste las ramas con git branch',
+    icon: 'checkCircle',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'branching',
+    points: 10
+  },
+
+  // Categoría: Organización
+  {
     id: 'multi-file',
     title: 'Organizador',
     description: 'Tienes más de 3 archivos en tu repositorio',
@@ -57,6 +134,48 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     points: 15
   },
   {
+    id: 'file-creator',
+    title: 'Creativo',
+    description: 'Creaste un archivo usando touch',
+    icon: 'star',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'organization',
+    points: 10
+  },
+  {
+    id: 'content-writer',
+    title: 'Escritor',
+    description: 'Escribiste contenido en un archivo usando echo',
+    icon: 'target',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'organization',
+    points: 15
+  },
+  {
+    id: 'add-all',
+    title: 'Eficiente',
+    description: 'Usaste git add . para agregar todos los archivos',
+    icon: 'trophy',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'organization',
+    points: 20
+  },
+  {
+    id: 'big-repo',
+    title: 'Constructor',
+    description: 'Tienes más de 10 archivos en tu repositorio',
+    icon: 'award',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'organization',
+    points: 40
+  },
+
+  // Categoría: Productividad
+  {
     id: 'commit-streak',
     title: 'Productivo',
     description: 'Realizaste 5 commits',
@@ -65,6 +184,98 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     unlockedAt: null,
     category: 'productivity',
     points: 25
+  },
+  {
+    id: 'log-viewer',
+    title: 'Historiador',
+    description: 'Consultaste el historial con git log',
+    icon: 'target',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 10
+  },
+  {
+    id: 'commit-master',
+    title: 'Commitero',
+    description: 'Realizaste 10 commits',
+    icon: 'trophy',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 50
+  },
+  {
+    id: 'speed-demon',
+    title: 'Demonio Veloz',
+    description: 'Realizaste 3 commits en una sesión',
+    icon: 'award',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 35
+  },
+  {
+    id: 'cleaner',
+    title: 'Limpiador',
+    description: 'Limpiaste la terminal con clear',
+    icon: 'checkCircle',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 5
+  },
+  {
+    id: 'resetter',
+    title: 'Renovador',
+    description: 'Reiniciaste el repositorio con reset-repo',
+    icon: 'star',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 15
+  },
+
+  // Categoría: Experto
+  {
+    id: 'git-guru',
+    title: 'Gurú del Git',
+    description: 'Desbloqueaste 15 logros',
+    icon: 'trophy',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 100
+  },
+  {
+    id: 'command-explorer',
+    title: 'Explorador de Comandos',
+    description: 'Usaste 10 comandos diferentes',
+    icon: 'award',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 60
+  },
+  {
+    id: 'persistent',
+    title: 'Persistente',
+    description: 'Volviste después de reiniciar el repositorio',
+    icon: 'star',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 25
+  },
+  {
+    id: 'perfectionist',
+    title: 'Perfeccionista',
+    description: 'Escribiste un commit con más de 10 caracteres',
+    icon: 'target',
+    unlocked: false,
+    unlockedAt: null,
+    category: 'productivity',
+    points: 20
   }
 ]
 
@@ -119,24 +330,99 @@ export default function AchievementSystem({ onAchievementUnlock }: AchievementSy
       let shouldUnlock = false
 
       switch (achievement.id) {
+        // Básicos
         case 'first-init':
           shouldUnlock = repository.isInitialized
           break
         case 'first-commit':
           shouldUnlock = repository.commits && repository.commits.length > 0
           break
+        case 'first-status':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git status'))
+          break
+        case 'first-add':
+          shouldUnlock = repository.files?.some((f: any) => f.status === 'staged')
+          break
+        case 'help-seeker':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('help'))
+          break
+
+        // Configuración
         case 'config-master':
           shouldUnlock = repository.userConfig?.name && repository.userConfig?.email
           break
+        case 'name-setter':
+          shouldUnlock = repository.userConfig?.name
+          break
+
+        // Ramas
         case 'branch-creator':
           shouldUnlock = repository.branches && repository.branches.length > 1
           break
+        case 'branch-switcher':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git checkout'))
+          break
+        case 'multi-branch':
+          shouldUnlock = repository.branches && repository.branches.length >= 3
+          break
+        case 'branch-lister':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git branch') && !cmd.includes('git branch '))
+          break
+
+        // Organización
         case 'multi-file':
           shouldUnlock = repository.files && repository.files.length > 3
           break
+        case 'file-creator':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('touch'))
+          break
+        case 'content-writer':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('echo'))
+          break
+        case 'add-all':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git add .'))
+          break
+        case 'big-repo':
+          shouldUnlock = repository.files && repository.files.length > 10
+          break
+
+        // Productividad
         case 'commit-streak':
           shouldUnlock = repository.commits && repository.commits.length >= 5
           break
+        case 'log-viewer':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git log'))
+          break
+        case 'commit-master':
+          shouldUnlock = repository.commits && repository.commits.length >= 10
+          break
+        case 'speed-demon':
+          // Verificar si hay 3 commits en los últimos comandos (simulado)
+          shouldUnlock = repository.commits && repository.commits.length >= 3
+          break
+        case 'cleaner':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('clear') || cmd.includes('cls'))
+          break
+        case 'resetter':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('reset-repo'))
+          break
+
+        // Experto
+        case 'git-guru':
+          const unlockedCount = achievements.filter(a => a.unlocked).length
+          shouldUnlock = unlockedCount >= 15
+          break
+        case 'command-explorer':
+          const uniqueCommands = new Set(repository.commandHistory?.map((cmd: string) => cmd.split(' ')[0]) || [])
+          shouldUnlock = uniqueCommands.size >= 10
+          break
+        case 'persistent':
+          shouldUnlock = repository.sessionCount > 1 // Necesitaríamos trackear esto
+          break
+        case 'perfectionist':
+          shouldUnlock = repository.commits?.some((commit: any) => commit.message && commit.message.length > 10)
+          break
+
         default:
           break
       }
