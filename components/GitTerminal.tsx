@@ -48,6 +48,44 @@ export default function GitTerminal() {
   const executeCommand = () => {
     if (!currentCommand.trim()) return
 
+    // Comando especial para limpiar terminal
+    if (currentCommand.trim() === 'clear' || currentCommand.trim() === 'cls') {
+      setCommandHistory([])
+      setCurrentCommand('')
+      setHistoryIndex(-1)
+      return
+    }
+
+    // Comando especial para resetear completamente el repositorio
+    if (currentCommand.trim() === 'reset-repo' || currentCommand.trim() === 'clear-repo') {
+      setRepository(INITIAL_REPOSITORY)
+      setCommandHistory([])
+      setTerminalHistory([])
+      setCurrentCommand('')
+      setHistoryIndex(-1)
+      
+      // Mostrar mensaje de confirmación
+      setCommandHistory([{
+        command: currentCommand.trim(),
+        output: [
+          '🧹 Repositorio completamente limpiado!',
+          '',
+          'Se ha reiniciado:',
+          '• Estado del repositorio',
+          '• Todos los archivos',
+          '• Historial de commits',
+          '• Configuración de usuario',
+          '• Ramas (vuelto a main)',
+          '• Historial de comandos',
+          '',
+          'Puedes empezar de nuevo con "git init" 🚀'
+        ],
+        timestamp: new Date(),
+        isError: false
+      }])
+      return
+    }
+
     const result = GitCommandProcessor.processCommand(currentCommand, repository)
     
     setCommandHistory(prev => [...prev, {
@@ -113,6 +151,34 @@ export default function GitTerminal() {
     setCommandHistory([])
   }
 
+  const resetRepository = () => {
+    setRepository(INITIAL_REPOSITORY)
+    setCommandHistory([])
+    setTerminalHistory([])
+    setCurrentCommand('')
+    setHistoryIndex(-1)
+    
+    // Mostrar mensaje de confirmación
+    setCommandHistory([{
+      command: 'reset-repo',
+      output: [
+        '🧹 Repositorio completamente limpiado!',
+        '',
+        'Se ha reiniciado:',
+        '• Estado del repositorio',
+        '• Todos los archivos',
+        '• Historial de commits',
+        '• Configuración de usuario',
+        '• Ramas (vuelto a main)',
+        '• Historial de comandos',
+        '',
+        'Puedes empezar de nuevo con "git init" 🚀'
+      ],
+      timestamp: new Date(),
+      isError: false
+    }])
+  }
+
   return (
     <div className="relative">
       {/* Achievement Notification */}
@@ -154,9 +220,18 @@ export default function GitTerminal() {
           
           <button
             onClick={clearTerminal}
-            className="px-3 py-1.5 text-xs bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-md transition-all duration-200 hover:scale-105"
+            className="px-2 py-1.5 text-xs bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 rounded-md transition-all duration-200 hover:scale-105"
+            title="Limpiar solo la pantalla"
           >
-            Limpiar
+            📺 Limpiar
+          </button>
+          
+          <button
+            onClick={resetRepository}
+            className="px-2 py-1.5 text-xs bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 rounded-md transition-all duration-200 hover:scale-105"
+            title="Reiniciar completamente el repositorio"
+          >
+            🧹 Reset
           </button>
           
           <div className="flex space-x-1">

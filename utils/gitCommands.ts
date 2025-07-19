@@ -12,8 +12,12 @@ export class GitCommandProcessor {
         return this.handleHelp()
       }
 
-      if (gitCommand === 'clear') {
+      if (gitCommand === 'clear' || gitCommand === 'cls') {
         return { output: [], repository }
+      }
+
+      if (gitCommand === 'reset-repo' || gitCommand === 'clear-repo') {
+        return this.handleResetRepository()
       }
 
       if (gitCommand === 'touch') {
@@ -70,7 +74,8 @@ export class GitCommandProcessor {
         '  git checkout <rama>     - Cambiar de rama',
         '',
         'Otros:',
-        '  clear                   - Limpiar terminal',
+        '  clear / cls             - Limpiar terminal',
+        '  reset-repo              - 🧹 Reiniciar completamente el repositorio',
         '  help                    - Mostrar esta ayuda'
       ],
       repository: {} as GitRepository // This won't be used since output is just help
@@ -502,6 +507,33 @@ export class GitCommandProcessor {
     return {
       output: [`Cambiado a rama '${targetBranch}'`],
       repository: { ...repository, currentBranch: targetBranch }
+    }
+  }
+
+  private static handleResetRepository(): CommandResult {
+    const initialRepository: GitRepository = {
+      isInitialized: false,
+      currentBranch: 'main',
+      branches: ['main'],
+      files: [],
+      commits: [],
+      userConfig: { name: '', email: '' }
+    }
+
+    return {
+      output: [
+        '🧹 Repositorio completamente limpiado!',
+        '',
+        'Se ha reiniciado:',
+        '• Estado del repositorio',
+        '• Todos los archivos',
+        '• Historial de commits',
+        '• Configuración de usuario',
+        '• Ramas (vuelto a main)',
+        '',
+        'Puedes empezar de nuevo con "git init" 🚀'
+      ],
+      repository: initialRepository
     }
   }
 }
