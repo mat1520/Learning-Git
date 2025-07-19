@@ -45,7 +45,7 @@ export interface Achievement {
   title: string
   description: string
   icon: string
-  category: 'basics' | 'configuration' | 'branching' | 'organization' | 'productivity'
+  category: 'basics' | 'configuration' | 'branching' | 'organization' | 'productivity' | 'expert'
   points: number
   unlocked: boolean
   unlockedAt: string | null

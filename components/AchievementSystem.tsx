@@ -244,7 +244,7 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     icon: 'trophy',
     unlocked: false,
     unlockedAt: null,
-    category: 'productivity',
+    category: 'expert',
     points: 100
   },
   {
@@ -254,7 +254,7 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     icon: 'award',
     unlocked: false,
     unlockedAt: null,
-    category: 'productivity',
+    category: 'expert',
     points: 60
   },
   {
@@ -264,7 +264,7 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     icon: 'star',
     unlocked: false,
     unlockedAt: null,
-    category: 'productivity',
+    category: 'expert',
     points: 25
   },
   {
@@ -274,7 +274,7 @@ const AVAILABLE_ACHIEVEMENTS: Achievement[] = [
     icon: 'target',
     unlocked: false,
     unlockedAt: null,
-    category: 'productivity',
+    category: 'expert',
     points: 20
   }
 ]
@@ -310,6 +310,8 @@ const getCategoryColor = (category: string) => {
       return 'bg-orange-500/20 text-orange-400 border-orange-500/30'
     case 'productivity':
       return 'bg-red-500/20 text-red-400 border-red-500/30'
+    case 'expert':
+      return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
     default:
       return 'bg-gray-500/20 text-gray-400 border-gray-500/30'
   }
@@ -565,7 +567,48 @@ export default function AchievementSystem({ onAchievementUnlock }: AchievementSy
 
 // Hook para usar el sistema de logros
 export const useAchievementSystem = () => {
-  const [achievements, setAchievements] = useLocalStorage<Achievement[]>('user-achievements', AVAILABLE_ACHIEVEMENTS)
+  // Función para migrar logros desde versión anterior
+  const migrateAchievements = (stored: Achievement[]): Achievement[] => {
+    // Si tenemos menos de 26 logros, necesitamos migrar
+    if (stored.length < 26) {
+      console.log('Migrando logros desde versión anterior...')
+      // Preservar el estado desbloqueado de logros existentes
+      const migratedAchievements = AVAILABLE_ACHIEVEMENTS.map(newAchievement => {
+        const existingAchievement = stored.find(old => old.id === newAchievement.id)
+        if (existingAchievement) {
+          return {
+            ...newAchievement,
+            unlocked: existingAchievement.unlocked,
+            unlockedAt: existingAchievement.unlockedAt
+          }
+        }
+        return newAchievement
+      })
+      return migratedAchievements
+    }
+    return stored
+  }
+
+  // Obtener logros del localStorage con migración automática
+  const getStoredAchievements = (): Achievement[] => {
+    try {
+      const stored = localStorage.getItem('user-achievements')
+      if (stored) {
+        const parsedAchievements = JSON.parse(stored) as Achievement[]
+        return migrateAchievements(parsedAchievements)
+      }
+    } catch (error) {
+      console.error('Error al cargar logros del localStorage:', error)
+    }
+    return AVAILABLE_ACHIEVEMENTS
+  }
+
+  const [achievements, setAchievements] = React.useState<Achievement[]>(getStoredAchievements)
+
+  // Guardar en localStorage cuando cambien los logros
+  React.useEffect(() => {
+    localStorage.setItem('user-achievements', JSON.stringify(achievements))
+  }, [achievements])
 
   const checkAchievements = (repository: any): Achievement[] => {
     const updatedAchievements = achievements.map(achievement => {
