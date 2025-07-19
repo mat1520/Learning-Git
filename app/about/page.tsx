@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart, User, Code, Award, BookOpen } from 'lucide-react'
+import { Github, Heart, User, Code, Award, BookOpen } from 'lucide-react'
 
 export default function AboutPage() {
   return (

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Heart } from 'lucide-react'
 
 export default function Footer() {
   return (
