@@ -1,0 +1,296 @@
+---
+title: 🤖 Git Hooks y Automatización
+description: Automatiza tu flujo de trabajo con Git hooks. Pre-commit, post-commit, pre-push y más. Integración con CI/CD.
+level: Avanzado
+duration: 35 min
+difficulty: 4
+author: Learning Git
+date: 2024-01-20
+topics:
+  - Client-side hooks
+  - Server-side hooks 
+  - Pre-commit automation
+  - Linting y testing
+  - CI/CD integration
+  - Custom hooks
+---
+
+# 🤖 Git Hooks y Automatización
+
+Los Git hooks son scripts que se ejecutan automáticamente en ciertos eventos del flujo de trabajo de Git. Son una herramienta poderosa para automatizar tareas, validar código y mantener la calidad del proyecto.
+
+## ¿Qué son los Git Hooks?
+
+Los hooks son scripts personalizables que Git ejecuta antes o después de eventos específicos como commits, pushes, merges, etc. Te permiten automatizar tareas repetitivas y establecer políticas de calidad de código.
+
+### Tipos de Hooks
+
+**Client-side hooks:**
+- `pre-commit`: Se ejecuta antes de hacer commit
+- `prepare-commit-msg`: Se ejecuta antes de editar el mensaje de commit
+- `commit-msg`: Se ejecuta para validar el mensaje de commit
+- `post-commit`: Se ejecuta después de hacer commit
+- `pre-push`: Se ejecuta antes de hacer push
+
+**Server-side hooks:**
+- `pre-receive`: Se ejecuta cuando se reciben objetos
+- `post-receive`: Se ejecuta después de recibir objetos
+- `update`: Se ejecuta para cada branch que se actualiza
+
+## Configuración de Hooks
+
+Los hooks se almacenan en `.git/hooks/` y deben ser ejecutables:
+
+```bash
+# Ver hooks disponibles
+ls .git/hooks/
+
+# Crear un hook pre-commit
+touch .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+### Ejemplo: Hook Pre-commit
+
+```bash
+#!/bin/sh
+# .git/hooks/pre-commit
+
+# Ejecutar linting
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Linting falló. Corrige los errores antes de hacer commit."
+  exit 1
+fi
+
+# Ejecutar tests
+npm run test
+if [ $? -ne 0 ]; then
+  echo "❌ Tests fallaron. Corrige los errores antes de hacer commit."
+  exit 1
+fi
+
+echo "✅ Pre-commit hooks pasaron exitosamente."
+```
+
+## Herramientas Populares
+
+### Husky
+Simplifica la gestión de hooks en proyectos Node.js:
+
+```bash
+# Instalar Husky
+npm install --save-dev husky
+
+# Inicializar
+npx husky init
+
+# Añadir hook
+npx husky add .husky/pre-commit "npm run lint"
+```
+
+### lint-staged
+Ejecuta linters solo en archivos staged:
+
+```json
+{
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.css": ["stylelint --fix", "git add"]
+  }
+}
+```
+
+## Casos de Uso Comunes
+
+### 1. Validación de Código
+```bash
+#!/bin/sh
+# Validar sintaxis antes de commit
+php -l *.php
+```
+
+### 2. Formato de Mensaje de Commit
+```bash
+#!/bin/sh
+# commit-msg hook
+commit_regex='^(feat|fix|docs|style|refactor|test|chore): .{1,50}'
+
+if ! grep -qE "$commit_regex" "$1"; then
+    echo "❌ Formato de commit inválido."
+    echo "Usa: type: description"
+    echo "Ejemplo: feat: añadir nueva funcionalidad"
+    exit 1
+fi
+```
+
+### 3. Prevenir Push a Master
+```bash
+#!/bin/sh
+# pre-push hook
+protected_branch='master'
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ $current_branch = $protected_branch ]; then
+    echo "❌ Push directo a $protected_branch está prohibido."
+    exit 1
+fi
+```
+
+## Integración con CI/CD
+
+### GitHub Actions
+```yaml
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+```
+
+### GitLab CI
+```yaml
+stages:
+  - test
+  - deploy
+
+lint:
+  stage: test
+  script:
+    - npm run lint
+
+test:
+  stage: test
+  script:
+    - npm test
+```
+
+## Mejores Prácticas
+
+### 1. Mantén los Hooks Rápidos
+```bash
+# ✅ Bueno: Solo archivos modificados
+git diff --cached --name-only | grep '\.js$' | xargs eslint
+
+# ❌ Malo: Todo el proyecto
+eslint .
+```
+
+### 2. Proporciona Retroalimentación Clara
+```bash
+echo "🔍 Ejecutando tests..."
+echo "✅ Tests completados exitosamente"
+echo "❌ Error: 3 tests fallaron"
+```
+
+### 3. Permite Bypass en Emergencias
+```bash
+# Permitir bypass con --no-verify
+git commit --no-verify -m "hotfix: arreglo crítico"
+```
+
+### 4. Versiona tus Hooks
+```bash
+# Crear carpeta de hooks en el repo
+mkdir .githooks
+cp .git/hooks/pre-commit .githooks/
+
+# Configurar Git para usar la carpeta
+git config core.hooksPath .githooks
+```
+
+## Hooks Avanzados
+
+### Hook de Análisis de Performance
+```bash
+#!/bin/sh
+# post-commit hook para análisis de performance
+
+bundle_size_before=$(cat .bundle-size)
+npm run build
+bundle_size_after=$(wc -c < dist/bundle.js)
+
+echo $bundle_size_after > .bundle-size
+
+if [ $bundle_size_after -gt $((bundle_size_before + 10000)) ]; then
+    echo "⚠️  El bundle creció más de 10KB"
+    echo "Antes: ${bundle_size_before} bytes"
+    echo "Después: ${bundle_size_after} bytes"
+fi
+```
+
+### Hook de Validación de Dependencias
+```bash
+#!/bin/sh
+# pre-commit: verificar dependencias vulnerables
+
+npm audit --audit-level high
+if [ $? -ne 0 ]; then
+    echo "❌ Vulnerabilidades críticas encontradas"
+    echo "Ejecuta: npm audit fix"
+    exit 1
+fi
+```
+
+## Herramientas Adicionales
+
+### commitizen
+Estandariza mensajes de commit:
+```bash
+npm install -g commitizen
+npm install -g cz-conventional-changelog
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+```
+
+### conventional-changelog
+Genera changelogs automáticamente:
+```bash
+npm install --save-dev conventional-changelog-cli
+npx conventional-changelog -p angular -i CHANGELOG.md -s
+```
+
+## Resolución de Problemas
+
+### Hook No Se Ejecuta
+```bash
+# Verificar permisos
+ls -la .git/hooks/pre-commit
+# Debe mostrar -rwxr-xr-x (ejecutable)
+
+# Dar permisos
+chmod +x .git/hooks/pre-commit
+```
+
+### Hook Falla Silenciosamente
+```bash
+# Añadir debugging
+echo "🔧 Ejecutando pre-commit hook..." >&2
+set -e  # Salir en cualquier error
+```
+
+### Compartir Hooks en el Equipo
+```bash
+# Crear script de setup
+#!/bin/bash
+# setup-hooks.sh
+cp .githooks/* .git/hooks/
+chmod +x .git/hooks/*
+echo "✅ Hooks instalados correctamente"
+```
+
+Los Git hooks son una herramienta fundamental para mantener la calidad del código y automatizar workflows. Implementa hooks gradualmente y siempre proporciona documentación clara para tu equipo.
+
+## Ejercicios Prácticos
+
+1. **Hook Pre-commit Básico**: Crea un hook que ejecute linting antes de cada commit
+2. **Validación de Mensaje**: Implementa validación de formato de mensajes de commit
+3. **Hook de Testing**: Configura un hook que ejecute tests antes de push
+4. **Integración con CI**: Conecta hooks locales con pipeline de CI/CD
+5. **Hook Personalizado**: Crea un hook que valide archivos específicos de tu proyecto

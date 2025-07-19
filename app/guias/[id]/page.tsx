@@ -14,7 +14,8 @@ const availableGuides = [
   'configuracion-inicial',
   'ramas-y-merge',
   'repositorios-remotos',
-  'flujo-git'
+  'flujo-git',
+  'git-hooks-automatizacion'
 ]
 
 interface GuidePageProps {
