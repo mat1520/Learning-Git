@@ -574,24 +574,99 @@ export const useAchievementSystem = () => {
       let shouldUnlock = false
 
       switch (achievement.id) {
+        // Básicos
         case 'first-init':
           shouldUnlock = repository.isInitialized
           break
         case 'first-commit':
           shouldUnlock = repository.commits && repository.commits.length > 0
           break
+        case 'first-status':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git status'))
+          break
+        case 'first-add':
+          shouldUnlock = repository.files?.some((f: any) => f.status === 'staged')
+          break
+        case 'help-seeker':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('help'))
+          break
+
+        // Configuración
         case 'config-master':
           shouldUnlock = repository.userConfig?.name && repository.userConfig?.email
           break
+        case 'name-setter':
+          shouldUnlock = repository.userConfig?.name
+          break
+
+        // Ramas
         case 'branch-creator':
           shouldUnlock = repository.branches && repository.branches.length > 1
           break
+        case 'branch-switcher':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git checkout'))
+          break
+        case 'multi-branch':
+          shouldUnlock = repository.branches && repository.branches.length >= 3
+          break
+        case 'branch-lister':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git branch') && !cmd.includes('git branch '))
+          break
+
+        // Organización
         case 'multi-file':
           shouldUnlock = repository.files && repository.files.length > 3
           break
+        case 'file-creator':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('touch'))
+          break
+        case 'content-writer':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('echo'))
+          break
+        case 'add-all':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git add .'))
+          break
+        case 'big-repo':
+          shouldUnlock = repository.files && repository.files.length > 10
+          break
+
+        // Productividad
         case 'commit-streak':
           shouldUnlock = repository.commits && repository.commits.length >= 5
           break
+        case 'log-viewer':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('git log'))
+          break
+        case 'commit-master':
+          shouldUnlock = repository.commits && repository.commits.length >= 10
+          break
+        case 'speed-demon':
+          // Verificar si hay 3 commits en los últimos comandos (simulado)
+          shouldUnlock = repository.commits && repository.commits.length >= 3
+          break
+        case 'cleaner':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('clear') || cmd.includes('cls'))
+          break
+        case 'resetter':
+          shouldUnlock = repository.commandHistory?.some((cmd: string) => cmd.includes('reset-repo'))
+          break
+
+        // Experto
+        case 'git-guru':
+          const unlockedCount = achievements.filter(a => a.unlocked).length
+          shouldUnlock = unlockedCount >= 15
+          break
+        case 'command-explorer':
+          const uniqueCommands = new Set(repository.commandHistory?.map((cmd: string) => cmd.split(' ')[0]) || [])
+          shouldUnlock = uniqueCommands.size >= 10
+          break
+        case 'persistent':
+          shouldUnlock = repository.sessionCount > 1 // Necesitaríamos trackear esto
+          break
+        case 'perfectionist':
+          shouldUnlock = repository.commits?.some((commit: any) => commit.message && commit.message.length > 10)
+          break
+
         default:
           break
       }
