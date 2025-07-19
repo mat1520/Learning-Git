@@ -1,136 +1,298 @@
+'use client'
+
 import Image from 'next/image'
-import { Play, Clock, ExternalLink, Youtube } from 'lucide-react'
+import { Play, Clock, ExternalLink, Youtube, Users, BookOpen, Target, Star } from 'lucide-react'
 
 const videos = [
+  // Nivel Principiante
   {
-    id: 'introduccion-git-video',
-    title: 'Git en 10 Minutos - Conceptos Básicos',
-    description: 'Una introducción rápida y clara a Git. Perfecto para principiantes que quieren entender qué es Git y por qué es tan importante.',
-    thumbnail: 'https://img.youtube.com/vi/RGOj5yH7evk/maxresdefault.jpg',
+    id: 'git-intro-2024',
+    title: '🚀 Git y GitHub Desde Cero - Curso Completo 2024',
+    description: 'Aprende Git desde los fundamentos hasta técnicas avanzadas. Perfecto para principiantes que quieren dominar el control de versiones.',
+    thumbnail: 'https://i.ytimg.com/vi/3GymExBkKjE/maxresdefault.jpg',
+    videoId: '3GymExBkKjE',
+    duration: '4:32:15',
+    level: 'Principiante',
+    views: '2.1M',
+    channel: 'MoureDev by Brais Moure',
+    topics: ['Git Básico', 'GitHub', 'Repositorios', 'Branches', 'Merge', 'Pull Requests'],
+    rating: 4.9
+  },
+  {
+    id: 'git-github-principiantes',
+    title: '📚 Git y GitHub para Principiantes',
+    description: 'Tutorial completo de Git y GitHub explicado paso a paso. Ideal para desarrolladores que empiezan.',
+    thumbnail: 'https://i.ytimg.com/vi/RGOj5yH7evk/maxresdefault.jpg',
     videoId: 'RGOj5yH7evk',
-    duration: '10:45',
+    duration: '1:15:39',
     level: 'Principiante',
-    views: '125K'
+    views: '1.8M',
+    channel: 'FreeCodeCamp Español',
+    topics: ['Instalación', 'Configuración', 'Comandos básicos', 'GitHub Desktop'],
+    rating: 4.8
   },
   {
-    id: 'comandos-basicos-video',
-    title: 'Los 7 Comandos Git que DEBES Conocer',
-    description: 'Aprende los comandos esenciales de Git que todo desarrollador necesita saber para su día a día.',
-    thumbnail: 'https://img.youtube.com/vi/HVsySz-h9r4/maxresdefault.jpg',
-    videoId: 'HVsySz-h9r4',
-    duration: '15:30',
+    id: 'comandos-git-esenciales',
+    title: '⚡ 10 Comandos Git que DEBES Conocer',
+    description: 'Los comandos más importantes de Git explicados con ejemplos prácticos. Perfecto para memorizar.',
+    thumbnail: 'https://i.ytimg.com/vi/jGehuhFhtnE/maxresdefault.jpg',
+    videoId: 'jGehuhFhtnE',
+    duration: '12:34',
     level: 'Principiante',
-    views: '89K'
+    views: '856K',
+    channel: 'Fazt',
+    topics: ['git add', 'git commit', 'git push', 'git pull', 'git status', 'git log'],
+    rating: 4.7
   },
   {
-    id: 'ramas-git-video',
-    title: 'Trabajando con Ramas en Git',
-    description: 'Domina el sistema de ramas de Git para organizar mejor tu código y trabajar en equipo de forma efectiva.',
-    thumbnail: 'https://img.youtube.com/vi/FyAAIHHClqI/maxresdefault.jpg',
-    videoId: 'FyAAIHHClqI',
-    duration: '18:20',
+    id: 'git-visual-explicado',
+    title: '🎨 Git Explicado Visualmente - Para Principiantes',
+    description: 'Comprende Git de manera visual con diagramas y animaciones. Perfecto para aprendices visuales.',
+    thumbnail: 'https://i.ytimg.com/vi/8JJ101D3knE/maxresdefault.jpg',
+    videoId: '8JJ101D3knE',
+    duration: '16:42',
+    level: 'Principiante',
+    views: '543K',
+    channel: 'Git Explained',
+    topics: ['Conceptos visuales', 'Diagramas', 'Staging area', 'Working directory'],
+    rating: 4.8
+  },
+
+  // Nivel Intermedio  
+  {
+    id: 'git-workflow-profesional',
+    title: '🏢 Git Workflow Profesional - Flujos de Trabajo',
+    description: 'Aprende los flujos de trabajo profesionales con Git: Git Flow, GitHub Flow y técnicas de equipos.',
+    thumbnail: 'https://i.ytimg.com/vi/tjgE_JJZvds/maxresdefault.jpg',
+    videoId: 'tjgE_JJZvds',
+    duration: '28:45',
     level: 'Intermedio',
-    views: '67K'
+    views: '425K',
+    channel: 'Midudev',
+    topics: ['Git Flow', 'Feature Branches', 'Code Review', 'Merge Strategies'],
+    rating: 4.9
   },
   {
-    id: 'github-colaboracion',
-    title: 'GitHub y Colaboración en Equipo',
-    description: 'Aprende a usar GitHub para colaborar con otros desarrolladores, hacer pull requests y manejar proyectos.',
-    thumbnail: 'https://img.youtube.com/vi/w3jLJU7DT5E/maxresdefault.jpg',
-    videoId: 'w3jLJU7DT5E',
-    duration: '22:15',
+    id: 'git-branches-avanzado',
+    title: '🌳 Branches en Git - Nivel Intermedio/Avanzado',
+    description: 'Domina completamente las ramas en Git: merge, rebase, cherry-pick y resolución de conflictos.',
+    thumbnail: 'https://i.ytimg.com/vi/CcJUj2bXBJk/maxresdefault.jpg',
+    videoId: 'CcJUj2bXBJk',
+    duration: '35:22',
     level: 'Intermedio',
-    views: '95K'
+    views: '312K',
+    channel: 'Fazt Code',
+    topics: ['Merge vs Rebase', 'Conflictos', 'Cherry-pick', 'Branch strategies'],
+    rating: 4.6
   },
   {
-    id: 'git-avanzado',
-    title: 'Git Avanzado: Rebase, Cherry-pick y más',
-    description: 'Técnicas avanzadas de Git para desarrolladores experimentados que quieren llevar sus habilidades al siguiente nivel.',
-    thumbnail: 'https://img.youtube.com/vi/f1wnYdLEpgI/maxresdefault.jpg',
-    videoId: 'f1wnYdLEpgI',
-    duration: '25:40',
-    level: 'Avanzado',
-    views: '43K'
+    id: 'git-hooks-tutorial',
+    title: '🔗 Git Hooks Tutorial Completo',
+    description: 'Automatiza tu workflow con Git Hooks. Pre-commit, post-commit y más ejemplos prácticos.',
+    thumbnail: 'https://i.ytimg.com/vi/fv5UteqwHNQ/maxresdefault.jpg',
+    videoId: 'fv5UteqwHNQ',
+    duration: '22:18',
+    level: 'Intermedio',
+    views: '178K',
+    channel: 'The Net Ninja',
+    topics: ['Pre-commit hooks', 'Post-commit hooks', 'Automation', 'Best practices'],
+    rating: 4.5
   },
   {
-    id: 'flujos-trabajo-git',
-    title: 'Flujos de Trabajo con Git en Proyectos Reales',
-    description: 'Aprende diferentes estrategias y flujos de trabajo que se usan en equipos de desarrollo profesionales.',
-    thumbnail: 'https://img.youtube.com/vi/1SXpE08hvGs/maxresdefault.jpg',
-    videoId: '1SXpE08hvGs',
-    duration: '28:55',
+    id: 'git-github-pages',
+    title: '🌐 Desplegar con GitHub Pages - Tutorial Completo',
+    description: 'Aprende a desplegar tu proyecto web gratuitamente usando GitHub Pages y Actions.',
+    thumbnail: 'https://i.ytimg.com/vi/QyFcl_Fba-k/maxresdefault.jpg',
+    videoId: 'QyFcl_Fba-k',
+    duration: '19:12',
+    level: 'Intermedio',
+    views: '567K',
+    channel: 'Codigo Facilito',
+    topics: ['GitHub Pages', 'CI/CD', 'Deployment', 'Static sites'],
+    rating: 4.7
+  },
+
+  // Nivel Avanzado
+  {
+    id: 'git-rebase-interactivo',
+    title: '🎯 Git Rebase Interactivo - Técnicas Avanzadas',
+    description: 'Reescribe la historia de Git como un profesional. Squash, edit, reword y más técnicas avanzadas.',
+    thumbnail: 'https://i.ytimg.com/vi/f1UrL0Cqyz8/maxresdefault.jpg',
+    videoId: 'f1UrL0Cqyz8',
+    duration: '18:56',
     level: 'Avanzado',
-    views: '76K'
+    views: '245K',
+    channel: 'Git & GitHub',
+    topics: ['Interactive rebase', 'Squashing', 'History editing', 'Advanced techniques'],
+    rating: 4.8
+  },
+  {
+    id: 'git-bisect-debugging',
+    title: '🔍 Git Bisect - Encuentra Bugs como un Pro',
+    description: 'Aprende a usar git bisect para encontrar exactamente qué commit introdujo un bug en tu código.',
+    thumbnail: 'https://i.ytimg.com/vi/P3ZR_-HqJaE/maxresdefault.jpg',
+    videoId: 'P3ZR_-HqJaE',
+    duration: '14:27',
+    level: 'Avanzado',
+    views: '89K',
+    channel: 'GitLab',
+    topics: ['Debugging', 'Binary search', 'Bug hunting', 'Advanced troubleshooting'],
+    rating: 4.6
+  },
+  {
+    id: 'git-submodules-advanced',
+    title: '📦 Git Submodules y Subtrees - Gestión Avanzada',
+    description: 'Maneja proyectos complejos con submodules y subtrees. Técnicas para proyectos empresariales.',
+    thumbnail: 'https://i.ytimg.com/vi/gSlXo2iLBro/maxresdefault.jpg',
+    videoId: 'gSlXo2iLBro',
+    duration: '26:43',
+    level: 'Avanzado',
+    views: '134K',
+    channel: 'Atlassian',
+    topics: ['Submodules', 'Subtrees', 'Monorepo', 'Project management'],
+    rating: 4.4
+  },
+  {
+    id: 'git-conventional-commits',
+    title: '📝 Conventional Commits - Mensajes Profesionales',
+    description: 'Aprende a escribir mensajes de commit profesionales usando Conventional Commits.',
+    thumbnail: 'https://i.ytimg.com/vi/OJqUWvmf4gg/maxresdefault.jpg',
+    videoId: 'OJqUWvmf4gg',
+    duration: '11:28',
+    level: 'Intermedio',
+    views: '143K',
+    channel: 'DevTips',
+    topics: ['Conventional commits', 'Semantic versioning', 'Changelog', 'Best practices'],
+    rating: 4.7
   }
 ]
 
+const getLevelColor = (level: string) => {
+  switch (level) {
+    case 'Principiante': return 'bg-green-500'
+    case 'Intermedio': return 'bg-yellow-500'
+    case 'Avanzado': return 'bg-red-500'
+    default: return 'bg-gray-500'
+  }
+}
+
+const getStarRating = (rating: number) => {
+  return Array.from({ length: 5 }, (_, i) => (
+    <Star
+      key={i}
+      className={`w-4 h-4 ${
+        i < Math.floor(rating) ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
+      }`}
+    />
+  ))
+}
+
 export default function VideosPage() {
+  const principiante = videos.filter(v => v.level === 'Principiante')
+  const intermedio = videos.filter(v => v.level === 'Intermedio')
+  const avanzado = videos.filter(v => v.level === 'Avanzado')
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 py-12">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Videos Educativos
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 via-pink-600 to-red-800 bg-clip-text text-transparent mb-6">
+            🎥 Videos Tutoriales de Git
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Aprende Git de forma visual con nuestra colección curada de videos educativos en español.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Aprende Git con los mejores tutoriales de YouTube. Desde principiante hasta experto con contenido seleccionado y de alta calidad.
           </p>
-        </div>
-
-        {/* Filter by Level */}
-        <div className="mb-8 flex justify-center">
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-1 shadow-md inline-flex">
-            <button className="px-4 py-2 rounded-md text-sm font-medium bg-primary-600 text-white">
-              Todos
-            </button>
-            <button className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              Principiante
-            </button>
-            <button className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              Intermedio
-            </button>
-            <button className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-              Avanzado
-            </button>
+          
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-lg border border-red-200 dark:border-red-800">
+              <Youtube className="w-5 h-5 text-red-500" />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Videos HD de YouTube</span>
+            </div>
+            <div className="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-lg border border-blue-200 dark:border-blue-800">
+              <Users className="w-5 h-5 text-blue-500" />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Contenido de Expertos</span>
+            </div>
+            <div className="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-lg border border-green-200 dark:border-green-800">
+              <BookOpen className="w-5 h-5 text-green-500" />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Todos los Niveles</span>
+            </div>
           </div>
         </div>
 
-        {/* Videos Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {videos.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
-        </div>
-
-        {/* Additional Resources */}
-        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-          <div className="text-center mb-6">
-            <Youtube className="w-12 h-12 text-red-600 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              ¿Quieres más contenido?
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 text-lg">
-              Estos videos son una selección curada de contenido educativo de alta calidad disponible en YouTube.
-            </p>
+        {/* Sección Principiante */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-lg font-bold text-xl shadow-lg">
+              🌱 Nivel Principiante
+            </div>
+            <div className="ml-4 text-gray-500 dark:text-gray-400 text-lg">
+              Fundamentos y primeros pasos
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 text-center">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                📚 Complementa con nuestras guías
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Lee nuestras guías detalladas para profundizar en los conceptos
-              </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {principiante.map((video) => (
+              <VideoCard key={video.id} video={video} />
+            ))}
+          </div>
+        </section>
+
+        {/* Sección Intermedio */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-3 rounded-lg font-bold text-xl shadow-lg">
+              🚀 Nivel Intermedio
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                💻 Practica en la terminal
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                Aplica lo aprendido en nuestra terminal Git interactiva
-              </p>
+            <div className="ml-4 text-gray-500 dark:text-gray-400 text-lg">
+              Técnicas avanzadas y workflows
             </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {intermedio.map((video) => (
+              <VideoCard key={video.id} video={video} />
+            ))}
+          </div>
+        </section>
+
+        {/* Sección Avanzado */}
+        <section className="mb-16">
+          <div className="flex items-center mb-8">
+            <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-lg font-bold text-xl shadow-lg">
+              🏆 Nivel Avanzado
+            </div>
+            <div className="ml-4 text-gray-500 dark:text-gray-400 text-lg">
+              Técnicas profesionales y expertas
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {avanzado.map((video) => (
+              <VideoCard key={video.id} video={video} />
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-2xl p-8 text-center text-white shadow-2xl">
+          <h2 className="text-3xl font-bold mb-4">¿Prefieres Aprender Practicando?</h2>
+          <p className="text-xl mb-6 opacity-90">
+            Combina estos videos con nuestro terminal interactivo para una experiencia de aprendizaje completa
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="/"
+              className="bg-white text-purple-600 font-bold py-3 px-8 rounded-xl hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Probar Terminal Interactivo
+            </a>
+            <a
+              href="/ejercicios"
+              className="bg-purple-800 text-white font-bold py-3 px-8 rounded-xl hover:bg-purple-900 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Ver Ejercicios Prácticos
+            </a>
           </div>
         </div>
       </div>
@@ -138,24 +300,31 @@ export default function VideosPage() {
   )
 }
 
-function VideoCard({ video }: { video: typeof videos[0] }) {
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'Principiante': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
-      case 'Intermedio': return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300'
-      case 'Avanzado': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300'
-    }
+interface VideoCardProps {
+  video: {
+    id: string
+    title: string
+    description: string
+    thumbnail: string
+    videoId: string
+    duration: string
+    level: string
+    views: string
+    channel: string
+    topics: string[]
+    rating: number
   }
+}
 
+function VideoCard({ video }: VideoCardProps) {
   const openVideo = () => {
     window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank')
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 overflow-hidden group cursor-pointer">
+    <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-600 transform hover:-translate-y-2">
       {/* Thumbnail */}
-      <div className="relative" onClick={openVideo}>
+      <div className="relative cursor-pointer" onClick={openVideo}>
         <Image
           src={video.thumbnail}
           alt={video.title}
@@ -164,51 +333,82 @@ function VideoCard({ video }: { video: typeof videos[0] }) {
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-          <div className="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all duration-300">
+          <div className="w-16 h-16 bg-red-600 bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all duration-300 group-hover:scale-110">
             <Play className="w-8 h-8 text-white ml-1" />
           </div>
         </div>
         
         {/* Duration badge */}
-        <div className="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-sm font-medium">
+        <div className="absolute bottom-3 right-3 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-xs font-semibold">
           {video.duration}
+        </div>
+        
+        {/* Level badge */}
+        <div className={`absolute top-3 left-3 ${getLevelColor(video.level)} text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg`}>
+          {video.level}
         </div>
       </div>
 
       {/* Content */}
       <div className="p-6">
-        <div className="flex items-center justify-between mb-2">
-          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getLevelColor(video.level)}`}>
-            {video.level}
-          </span>
-          <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
-            <span>{video.views} vistas</span>
+        {/* Channel and Rating */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+            <Users className="w-4 h-4" />
+            <span>{video.channel}</span>
+          </div>
+          <div className="flex items-center space-x-1">
+            {getStarRating(video.rating)}
+            <span className="text-sm text-gray-500 ml-1">({video.rating})</span>
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 transition-colors">
+        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
           {video.title}
         </h3>
-
-        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+        
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 leading-relaxed">
           {video.description}
         </p>
 
-        {/* Actions */}
+        {/* Topics */}
+        <div className="mb-4">
+          <div className="flex flex-wrap gap-1">
+            {video.topics.slice(0, 3).map((topic, index) => (
+              <span
+                key={index}
+                className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs"
+              >
+                {topic}
+              </span>
+            ))}
+            {video.topics.length > 3 && (
+              <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full text-xs">
+                +{video.topics.length - 3} más
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Stats and Action */}
         <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="flex items-center space-x-1">
+              <Clock className="w-4 h-4" />
+              <span>{video.duration}</span>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Target className="w-4 h-4" />
+              <span>{video.views} vistas</span>
+            </div>
+          </div>
+          
           <button
             onClick={openVideo}
-            className="flex items-center text-red-600 hover:text-red-700 font-medium text-sm transition-colors"
+            className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 group-hover:scale-105"
           >
-            <Play className="w-4 h-4 mr-1" />
-            Ver en YouTube
-          </button>
-          <button
-            onClick={openVideo}
-            className="p-2 text-gray-400 hover:text-primary-600 transition-colors"
-            title="Abrir en nueva pestaña"
-          >
-            <ExternalLink className="w-4 h-4" />
+            <Youtube className="w-4 h-4" />
+            <span>Ver Video</span>
           </button>
         </div>
       </div>

@@ -77,22 +77,6 @@ export default function AboutPage() {
                   <Github className="w-5 h-5 mr-3" />
                   github.com/mat1520
                 </a>
-                <a
-                  href="https://linkedin.com/in/ariel-melo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5 mr-3" />
-                  linkedin.com/in/ariel-melo
-                </a>
-                <a
-                  href="mailto:ariel@example.com"
-                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  <Mail className="w-5 h-5 mr-3" />
-                  ariel@example.com
-                </a>
               </div>
             </div>
           </div>

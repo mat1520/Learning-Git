@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+// @ts-expect-error: gray-matter has no type definitions
 import matter from 'gray-matter'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ArrowLeft, Clock, User, BookOpen } from 'lucide-react'

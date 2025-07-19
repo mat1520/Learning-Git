@@ -1,7 +1,7 @@
 {
-  "/ejercicios/page": "app/ejercicios/page.js",
-  "/guias/page": "app/guias/page.js",
+  "/page": "app/page.js",
   "/guias/[id]/page": "app/guias/[id]/page.js",
-  "/about/page": "app/about/page.js",
-  "/logros/page": "app/logros/page.js"
+  "/logros/page": "app/logros/page.js",
+  "/videos/page": "app/videos/page.js",
+  "/ejercicios/page": "app/ejercicios/page.js"
 }
