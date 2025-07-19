@@ -6,6 +6,8 @@
 
 ### 🎯 La forma más divertida y práctica de aprender Git
 
+**[🌐 ACCEDER A LA PLATAFORMA](https://learning-git-hazel.vercel.app)**
+
 [![GitHub stars](https://img.shields.io/github/stars/mat1520/Learning-Git?style=for-the-badge&logo=github)](https://github.com/mat1520/Learning-Git/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/mat1520/Learning-Git?style=for-the-badge&logo=github)](https://github.com/mat1520/Learning-Git/network)
 [![GitHub issues](https://img.shields.io/github/issues/mat1520/Learning-Git?style=for-the-badge&logo=github)](https://github.com/mat1520/Learning-Git/issues)
@@ -91,6 +93,11 @@
 ---
 
 ## 🚀 Comenzar Ahora
+
+### 🌐 **Pruébalo en Vivo**
+**[▶️ ACCEDER A LA PLATAFORMA COMPLETA](https://learning-git-hazel.vercel.app)**
+
+*¡Sin instalación requerida! Comienza a aprender Git inmediatamente.*
 
 ### 🔧 Instalación Local
 
@@ -265,7 +272,7 @@ Este proyecto está bajo la licencia **MIT**. Consulta el archivo [LICENSE](LICE
 
 ### 🚀 ¿Listo para dominar Git?
 
-**[⚡ COMENZAR AHORA ⚡](http://localhost:3000)**
+**[⚡ COMENZAR AHORA ⚡](https://learning-git-hazel.vercel.app)**
 
 *Hecho con ❤️ para la comunidad developer*
 
