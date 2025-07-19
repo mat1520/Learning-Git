@@ -21,21 +21,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/guias/[id]/page.js"
     ],
-    "/ejercicios/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/ejercicios/page.js"
-    ],
-    "/logros/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/logros/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
     "/videos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
